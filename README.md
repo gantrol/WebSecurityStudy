@@ -2,14 +2,14 @@
 
 ## 关键词
 
-网络攻防(红蓝对抗); 漏洞扫描; hacking exposed web applications
+网络攻防(红蓝对抗); 漏洞扫描; hacking; security; web applications
 
 ## 模拟手段:WebGoat
 
 - [java SE](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
   
   - [Win7设置Java环境变量](https://www.cnblogs.com/iwin12021/p/6057890.html)
-  - Linux install Java 12
+  - Install Java 12
   ```
   rpm -Uvh jdk-12.0.1_linux-x64_bin.rpm
   ```
@@ -18,9 +18,10 @@
   - [Goat](localhost:8080/WebGoat)
   - [Wolf](http://localhost:9090/login)
   
-- 实际(例子：`10.1.121.141:8080/WebGoat`)
+- 实际(例子：`10.1.121.141:8080/WebGoat`；`https://10.1.121.141:9090/WebWolf`)
 ```bash
 java -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --server.port=8080 --server.address=10.1.121.141
+java -jar /usr/webgoat/webwolf-8.0.0.M25.jar --server.port=9090 --server.address=10.1.121.141
 ```
 
 ## 工具
@@ -40,3 +41,4 @@ java -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --server.port=8080 --server.
   - https://github.com/sbilly/awesome-security
   - https://github.com/jekil/awesome-hacking
 
+src/main/java/org/owasp/webgoat/plugin
