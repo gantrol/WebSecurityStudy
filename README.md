@@ -4,6 +4,10 @@
 
 网络攻防(红蓝对抗); 漏洞扫描; hacking; security; web applications
 
+## 常见错误
+
+1. 只把验证逻辑放到前端
+
 ## 模拟手段:WebGoat
 
 - [java SE](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
