@@ -1,9 +1,0 @@
-{
-  "lessonCompleted" : false,
-  "feedback" : "Try again. You need to use the same method\\/URL you used to access your own profile via direct object reference.",
-  "output" : null
-}{
-  "lessonCompleted" : true,
-  "feedback" : "Well done, you found someone else's profile",
-  "output" : "{role=3, color=brown, size=large, name=Buffalo Bill, userId=2342388}"
-}
