@@ -1,0 +1,5 @@
+{
+  "lessonCompleted" : true,
+  "feedback" : "Congratulations. You have successfully completed the assignment.",
+  "output" : null
+}

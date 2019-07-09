@@ -1,8 +1,18 @@
 # 安全红蓝对抗
 
+主要基于WebGoat学习
+
+TODO: github md asset in child directory;
+TODO: client side * 2
+TODO: client side
+
 ## 关键词
 
 网络攻防(红蓝对抗); 漏洞扫描; hacking; security; web applications
+
+## 脚本
+
+[所用脚本介绍](intro.md)
 
 ## 常见错误
 

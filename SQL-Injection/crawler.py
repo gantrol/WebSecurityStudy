@@ -1,7 +1,7 @@
 import requests
 
 base_url = "http://10.1.121.141:8080/WebGoat/IDOR/profile/"
-cookie = {"JSESSIONID":"4E3A95CF68081F9D672F6798F7E46C19"}
+cookie = {"JSESSIONID":"CA022FA656A2740E47503559256EB92D"}
 file_name = "result.txt"
 
 if __name__ == "__main__":
