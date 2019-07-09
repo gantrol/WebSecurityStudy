@@ -159,7 +159,11 @@ passwd isn't the field
 thisisasecretfortomonly
 ```
 
-### 找IP地址
+### 找IP地址 SQL Injection (mitigation) 10
+
+> 条件：一基于String boot的列表查看系统，无特别安全防护（即封ip等）。
+>
+> 要求：获取名为webgoat-prd的服务器的完整ip，为了降低难度，give you the last part: `xxx.130.219.202`。
 
 ```python
 import requests
