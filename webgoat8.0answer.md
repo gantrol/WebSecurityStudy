@@ -1,11 +1,11 @@
 # WebGoat8.0
 
-## Install
+## 简易部署
 
 - [java SE](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
   
   - [Win7设置Java环境变量](https://www.cnblogs.com/iwin12021/p/6057890.html)
-  - Install Java 12
+  - linux update to Java 12
   ```
   rpm -Uvh jdk-12.0.1_linux-x64_bin.rpm
   ```
@@ -14,11 +14,16 @@
   - [Goat](http://localhost:8080/WebGoat)
   - [Wolf](http://localhost:9090/login)
   
-- 实际(例子：`10.1.121.141:8080/WebGoat`；`https://10.1.121.141:9090/WebWolf`)
+- 实际(例子：`localhost:8080/WebGoat`; `10.1.121.141:8080/WebGoat`; `https://10.1.121.141:9090/WebWolf`)
 ```bash
-java -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --server.port=8080 --server.address=10.1.121.141
-java -jar /usr/webgoat/webwolf-8.0.0.M25.jar --server.port=9090 --server.address=10.1.121.141
+nohup java -Dfile.encoding=UTF8 -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --server.port=8080 --server.address=10.1.121.141 &
+
+nohup java --add-modules java.xml.bind -jar /usr/webgoat/webwolf-8.0.0.M25.jar --server.port=9090 --server.address=10.1.121.141 &
+
+java -Dfile.encoding=UTF8 -jar webgoat-server-8.0.0.M25.jar
 ```
+
+> VPN可能会导致脚本连接不到WebGoat（500）
 
 ## SQL 盲注
 
@@ -222,7 +227,7 @@ if __name__ == "__main__":
 
 XML外部实体注入攻击（XEE，XML External Entity attack）
 
-#### 3
+#### 3评论系统
 
 > from `/WebGoat/start.mvc#lesson/XXE.lesson/3`
 >
@@ -264,7 +269,7 @@ with open(result_file_path, 'w') as file:
 
 ![](xss3.PNG)
 
-#### 4
+#### 4评论系统（json接口）
 
 > from `/WebGoat/start.mvc#lesson/XXE.lesson/4`
 >
@@ -304,6 +309,77 @@ with open(result_file_path, 'w') as file:
 ## XSS
 
 Cross-Site Scripting (XSS)
+
+### 防护
+
+#### 5 OWASP Java Encoder for Stored XSS
+
+> from `/WebGoat/start.mvc#lesson/CrossSiteScriptingMitigation.lesson/4`
+>
+> 条件：可引入OWASP_Java_Encoder_Project
+>
+> 要求：Try to prevent this kind of XSS by escaping the url parameters in the JSP file
+>
+> 参考：
+>
+> 1. https://www.owasp.org/index.php/OWASP_Java_Encoder_Project
+> 2. https://owasp.github.io/owasp-java-encoder/encoder-jsp/index.html
+
+```html
+<%@taglib prefix="e" uri="https://www.owasp.org/index.php/OWASP_Java_Encoder_Project" %>
+<html>
+    <head>
+        <title>Using GET and POST Method to Read Form Data</title>
+    </head>
+    <body>
+        
+        <h1>Using POST Method to Read Form Data</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td><b>First Name:</b></td>
+                    <td>${e:forHtml(param.first_name)}</td>
+                </tr>
+                <tr>
+                    <td><b>Last Name:</b></td>
+                    <td>${e:forHtml(param.last_name)}</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
+```
+
+
+
+#### 6 [OWASP AntiSamy](https://github.com/nahsra/antisamy/) for Stored XSS
+
+> from `/WebGoat/start.mvc#lesson/CrossSiteScriptingMitigation.lesson/4`
+>
+> 条件：可引入OWASP_AntiSamy_Project
+>
+> 要求：Try to prevent this kind of XSS by creating a clean string inside of the saveNewComment() function. Use the "antisamy-slashdot.xml" as policy file for this example:
+>
+> 参考：
+>
+> 1. https://github.com/nahsra/antisamy/
+> 2. https://www.owasp.org/index.php/Category:OWASP_AntiSamy_Project
+
+```java
+import org.owasp.validator.html.*;
+import MyCommentDAO;
+
+public class AntiSamyController {
+    public void saveNewComment(int threadID, int userID, String newComment){
+        Policy p = Policy.getInstance("antisamy-slashdot.xml")
+        AntiSamy as = new AntiSamy();
+        CleanResults cr = as.scan(newComment, p)
+        MyCommentDAO.addComment(threadID, userID, cr.getCleanHTML());
+    }
+}
+```
+
+
 
 ## Insecure Communication
 
