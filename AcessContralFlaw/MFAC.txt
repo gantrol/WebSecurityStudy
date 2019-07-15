@@ -1,0 +1,29 @@
+[ {
+  "username" : "501963347",
+  "admin" : false,
+  "userHash" : "21LEPjeUPQpsjlnq6TvWgOIGCWy5IYrpM1KMI+5g2yA="
+}, {
+  "username" : "aaaaaa",
+  "admin" : false,
+  "userHash" : "NHFxhBTRv0iGvMrzRBnv9eAyTSPguPGknN3R/qCmiDs="
+}, {
+  "username" : "cdrf123",
+  "admin" : false,
+  "userHash" : "Xogexrh8c+c9tu5hgzs2CrpFLKfnczz9eP3SoUi1PJc="
+}, {
+  "username" : "chenzhy",
+  "admin" : false,
+  "userHash" : "+QJHJw0NAh/BeeV1WrOEmU4LLvZHArT5uypWwcXrLYg="
+}, {
+  "username" : "csrf-aaaaaa",
+  "admin" : false,
+  "userHash" : "FdvhscAO70ta0sle7ugLdpesjzHUwIRPQcN3X+zJKz4="
+}, {
+  "username" : "qqqqqq",
+  "admin" : false,
+  "userHash" : "d+UFiqswxxSxunpCJCDVUnY8bzlAyFF4cX7hPJ35O6o="
+}, {
+  "username" : "webgoatadmin",
+  "admin" : false,
+  "userHash" : "79bJmMYReRnB+B1zqfrKcKDhqWmN5ytXoNNYxDs+If8="
+} ]
