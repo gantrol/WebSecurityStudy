@@ -1,0 +1,3 @@
+tom: purple
+admin: green
+larry: yellow
