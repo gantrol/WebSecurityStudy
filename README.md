@@ -6,6 +6,11 @@ TODO: github md asset in child directory;
 TODO: client side * 2
 TODO: client side
 
+## 真要求
+
+1. [报告]()
+2. [手册](Handbook.md)
+
 ## 关键词
 
 网络攻防(红蓝对抗); 漏洞扫描; hacking; security; web applications
