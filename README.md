@@ -60,4 +60,14 @@ java -jar /usr/webgoat/webwolf-8.0.0.M25.jar --server.port=9090 --server.address
   - https://github.com/sbilly/awesome-security
   - https://github.com/jekil/awesome-hacking
 
-src/main/java/org/owasp/webgoat/plugin
+### git 
+
+#### ssh
+
+https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
+
+```shell
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+git push
+```

