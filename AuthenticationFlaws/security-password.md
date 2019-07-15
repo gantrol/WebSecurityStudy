@@ -1,6 +1,5 @@
 # 强密码手册
 
-
 ## 强密码原则
 
 强破解 + 容易记
@@ -12,8 +11,6 @@
 3. 字符、数据、特殊符号都要用
 4. use different passwords for different accounts
 5. use two factor authentication。If possible, use two factor authentication methods to add an extra layer of security to your accounts.
-
-
 
 ### 对管理者
 

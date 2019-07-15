@@ -6,14 +6,14 @@
   
   - [Win7设置Java环境变量](https://www.cnblogs.com/iwin12021/p/6057890.html)
   - Install Java 12
-  ```
-  rpm -Uvh jdk-12.0.1_linux-x64_bin.rpm
-  ```
+
+```shell
+rpm -Uvh jdk-12.0.1_linux-x64_bin.rpm
+```
   
 - https://github.com/WebGoat/WebGoat
   - [Goat](http://localhost:8080/WebGoat)
-  - [Wolf](http://localhost:9090/login)
-  
+  - [Wolf](http://localhost:9090/login) 
 - 实际(例子：`10.1.121.141:8080/WebGoat`；`https://10.1.121.141:9090/WebWolf`)
 ```bash
 java -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --server.port=8080 --server.address=10.1.121.141
@@ -82,7 +82,7 @@ public boolean hasUser(String username) {
 }
 
 public String addUser(...) {
-    // add user to db. 
+    // add user to db.
 }
 ```
 
@@ -130,7 +130,7 @@ def guess_pw(guess, password_field, digit):
     check = (f"User {username_tmp} already exists please try to register with a different username.")
     if (feedback == check):
         return True
-    
+
 
 if __name__ == "__main__":
     url = base_url + relative_url
@@ -216,8 +216,6 @@ if __name__ == "__main__":
 
 ```
 
-
-
 ### XML外部实体注入攻击
 
 XML外部实体注入攻击（XEE，XML External Entity attack）
@@ -254,7 +252,7 @@ with open(result_file_path, 'w') as file:
 
 运行后文件和网页的结果：
 
-```
+```json
 {
   "lessonCompleted" : true,
   "feedback" : "Congratulations. You have successfully completed the assignment.",
@@ -262,7 +260,7 @@ with open(result_file_path, 'w') as file:
 }
 ```
 
-![](xss3.PNG)
+![xss3 result](xss3.PNG)
 
 #### 4
 
@@ -317,7 +315,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbEx {
-    
+
     public void connectToAndQueryDatabase(String username, String password) {
 
         Connection con = DriverManagergetConnection(
@@ -333,7 +331,7 @@ public class DbEx {
             String s = rs.getString("b");
             float f = rs.getFloat("c");
         }
-        
+
         // PreparedStatement
         try {
             // Connection con = ...
@@ -374,10 +372,6 @@ public class DbEx {
 }
 ```
 
-
-
-
-
 ## XSS
 
 Cross-Site Scripting (XSS)
@@ -411,12 +405,10 @@ Cross-Site Scripting (XSS)
 1. 提交表单前，用抓包软件拦截，发现该网页通过Form Data，POST到`/WebGoat/HtmlTampering/task`处。
 
 2. 修改HTML。在HTML中搜索“2999.99”、`input`等字段，发现用DevTools直接修改r如下部分的value即可
-   
-   ```html
-   <input id="Total" name="Total" type="HIDDEN" value="2999.99">
-   ```
 
-
+```html
+<input id="Total" name="Total" type="HIDDEN" value="2999.99">
+```
 
 ### Client side filtering
 
@@ -429,7 +421,6 @@ Cross-Site Scripting (XSS)
 > 条件：有一公司内部查询表，可查询相关用户信息。
 >
 > 要求：仅利用浏览器，找出按权限要求不能获取的CEO的工资。
-
 > 注：此处WebGoat所在地址为http://localhost:8080，若您使用其他，请自行替代
 
 通过浏览器的DevTool观察到此[XHR](http://localhost:8080/WebGoat/lesson_js/clientSideFiltering.js?_=1562651603646)中有`get`方法指向`"clientSideFiltering/salaries?userId="`，据此推断出`/WebGoat/clientSideFiltering/salaries?userId=`中有相关信息。经查，发现其中数据有：
@@ -456,7 +447,6 @@ Cross-Site Scripting (XSS)
 > 条件：有一手机采购页面，可购买多部、多种配置的某型号手机，可用折扣码打折。
 >
 > 要求：仅利用浏览器，找出按权限要求不能获取的折扣码。
-
 > 注：此处WebGoat所在地址为http://localhost:8080，若您使用其他，请自行替代
 
 跟2类似，通过DevTool观察，发现此[XHR](http://localhost:8080/WebGoat/lesson_js/clientSideFilteringFree.js?_=1562653134370)中逻辑与商品逻辑吻合（一台手机\$899，另有相关运算，且其中有如下计算折扣的逻辑，初步判断折扣结算数据可能有冗余：
@@ -496,6 +486,3 @@ $(".checkoutCode").on("blur", function () {
   } ]
 }
 ```
-
-
-

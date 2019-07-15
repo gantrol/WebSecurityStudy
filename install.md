@@ -7,4 +7,3 @@ java -Dfile.encoding=UTF8 -jar /usr/webgoat/webgoat-server-8.0.0.M25.jar --serve
 
 nohup java -Dfile.encoding=UTF8 -jar /usr/webgoat/webwolf-8.0.0.M25.jar --server.port=9090 --server.address=10.1.121.141 &
 ```
-
