@@ -1,4 +1,3 @@
-
 // SQL imports
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,11 +10,10 @@ public class DbEx {
     
     public void connectToAndQueryDatabase(String username, String password) {
 
-        Connection con = DriverManager.getConnection(
+        Connection con = DriverManagergetConnection(
                             "jdbc:myDriver:myDatabase",
                             username,
                             password);
-
         // createStatement, executeQuery
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT a, b, c FROM Table1");
@@ -27,11 +25,14 @@ public class DbEx {
         }
         
         // PreparedStatement
-        PreparedStatement pstmt = con.preparedStatement
-        ("SELECT status FROM users WHERE name= ? AND mail = ?");
-        pstmt.setString(1, "qqq");
-        pstmt.setString(2, "501@qq.com");
-        pstmt.executeQuery();
+        try {
+            // Connection con = ...
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users WHERE name= ?");
+            pstmt.setString(1, "qqqqqq");
+            pstmt.executeQuery();
+        } catch (Exception e ) {
+            System.out.println(e);
+        }
     }
 
     public static void viewTable(Connection con, String dbName)
